@@ -1,0 +1,166 @@
+/* === 电子Pipe小程序 - 现代化设计令牌 v3.0 === */
+/* 方案一(智能极简风) + 方案四(暖色亲和字号放大) 融合 */
+/* 与 UI-DESIGN.md YAML frontmatter 同源，代码里不得出现 token 之外的硬编码颜色/间距/圆角 */
+
+/* 微信小程序根元素是 page 而非 :root，需同时定义 */
+:root, page {
+  /* === Primary Colors - 智能极简风主色系 === */
+  --color-primary: #007AFF;
+  --color-primary-hover: #0066D6;
+  --color-primary-active: #0052AC;
+  --color-primary-light: rgba(0, 122, 255, 0.08);
+  --color-primary-lighter: rgba(0, 122, 255, 0.04);
+  --color-success: #34C759;
+  --color-success-hover: #28A745;
+  --color-warning: #FF9500;
+  --color-warning-hover: #E88600;
+  --color-danger: #FF3B30;
+  --color-yellow: #FFCC00;
+  --color-purple: #5856D6;
+  --color-pink: #FF2D55;
+  --color-teal: #5AC8FA;
+  --color-indigo: #5856D6;
+
+  /* === Neutral Colors (Apple HIG Gray Scale) === */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-gray-1: #3C3C43;
+  --color-gray-2: #8E8E93;
+  --color-gray-3: #AEAEB2;
+  --color-gray-4: #C7C7CC;
+  --color-gray-5: #D1D1D6;
+  --color-gray-6: #E5E5EA;
+  --color-gray-7: #F2F2F7;
+
+  /* === Background - 层次化背景系统 === */
+  --bg-primary: #F2F2F7;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F9F9F9;
+  --bg-elevated: #FFFFFF;
+  --bg-grouped: #F2F2F7;
+
+  /* === Text Colors - 优化对比度 === */
+  --text-primary: #1C1C1E;
+  --text-secondary: #3C3C43;
+  --text-tertiary: #8E8E93;
+  --text-quaternary: #3C3C434D;
+  --text-link: #007AFF;
+  --text-placeholder: #C7C7CC;
+
+  /* === Spacing - 8px Grid (方案四适度放大) === */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 48px;
+
+  /* === Border Radius - 现代圆角系统 === */
+  --radius-none: 0;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* === Shadows - 分层阴影系统 === */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-float: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+  /* === Typography - 方案四字号放大 === */
+  --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC', 'Helvetica Neue', sans-serif;
+  --font-size-caption2: 11px;
+  --font-size-caption1: 13px;
+  --font-size-footnote: 14px;
+  --font-size-subhead: 16px;
+  --font-size-callout: 17px;
+  --font-size-body: 17px;
+  --font-size-headline: 17px;
+  --font-size-title3: 20px;
+  --font-size-title2: 22px;
+  --font-size-title1: 28px;
+  --font-size-largetitle: 34px;
+
+  /* === Font Weights === */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* === Animation - 流畅动效 === */
+  --animation-fast: 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --animation-normal: 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --animation-slow: 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --animation-spring: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* === Z-Index 层级系统 === */
+  --z-normal: 0;
+  --z-sticky: 10;
+  --z-fixed: 100;
+  --z-modal-backdrop: 500;
+  --z-modal: 510;
+  --z-popover: 600;
+  --z-tooltip: 700;
+}
+
+/* === Global Styles === */
+page {
+  font-family: var(--font-family);
+  font-size: var(--font-size-subhead);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* === Utility Classes === */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-blue { color: var(--color-primary); }
+.text-green { color: var(--color-success); }
+.text-red { color: var(--color-danger); }
+.text-warning { color: var(--color-warning); }
+
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* === 卡片基础样式 === */
+.card {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.card-interactive {
+  transition: transform var(--animation-fast), box-shadow var(--animation-fast);
+}
+
+.card-interactive:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-xs);
+}
+
+/* === 分割线 === */
+.divider {
+  height: 0.5px;
+  background-color: var(--color-gray-6);
+}
+
+/* === 安全区域 === */
+.safe-area-bottom {
+  height: calc(env(safe-area-inset-bottom) + 100px);
+}

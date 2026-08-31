@@ -1,0 +1,51 @@
+# === spec-superflow-enhanced 生成文件（重装可恢复，不纳入版本控制）===
+/AGENTS.md
+/.agents/
+/plugin.json
+/knowledge.md
+/.githooks/
+/.joycode/
+/.opencode/
+/.hermes/
+/.cursor/
+/.freebuff/
+/.workbuddy/
+/.claude/
+/_output/
+# === end spec-superflow-enhanced ===
+
+# === 构建产物 ===
+server/target/
+node_modules/
+dist/
+
+# === IDE ===
+.idea/
+*.iml
+.vscode/
+
+# === OS 临时文件 ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === 临时文件 ===
+tmp_*.json
+tmp_*.txt
+nul
+
+# === 日志 ===
+*.log
+
+# === 环境配置 ===
+.env
+.env.local
+
+# === 数据库 ===
+server/score.db
+
+# === 上传文件 ===
+server/uploads/
+
+# === 大文件 ===
+docs/*.mp4

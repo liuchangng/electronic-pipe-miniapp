@@ -1,0 +1,362 @@
+-- 用户表
+CREATE TABLE IF NOT EXISTS user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    openid VARCHAR(64) UNIQUE NOT NULL,
+    nickname VARCHAR(64),
+    avatar VARCHAR(256),
+    member_type VARCHAR(32) DEFAULT '普通用户',
+    point INTEGER DEFAULT 0,
+    level INTEGER DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 用户反馈表
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL DEFAULT 'suggestion',
+    content TEXT NOT NULL,
+    contact VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 积分流水表
+CREATE TABLE IF NOT EXISTS point_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    amount INTEGER NOT NULL,
+    description VARCHAR(128),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 曲谱表
+CREATE TABLE IF NOT EXISTS song (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128) NOT NULL,
+    author VARCHAR(128),
+    icon VARCHAR(32),
+    color VARCHAR(16),
+    description VARCHAR(512),
+    image_url VARCHAR(256),
+    score_image_url VARCHAR(256),
+    video_url VARCHAR(256),
+    category VARCHAR(32) DEFAULT 'other',
+    status INTEGER DEFAULT 1,
+    sort_order INTEGER DEFAULT 0,
+    view_count INTEGER DEFAULT 0,
+    favorite_count INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 用户反馈表
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL DEFAULT 'suggestion',
+    content TEXT NOT NULL,
+    contact VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 积分流水表
+CREATE TABLE IF NOT EXISTS point_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    amount INTEGER NOT NULL,
+    description VARCHAR(128),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 收藏表
+CREATE TABLE IF NOT EXISTS favorite (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    song_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(user_id, song_id)
+);
+
+-- 知识表
+CREATE TABLE IF NOT EXISTS knowledge (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128) NOT NULL,
+    subtitle VARCHAR(128),
+    category VARCHAR(32) NOT NULL,
+    content TEXT,
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 用户反馈表
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL DEFAULT 'suggestion',
+    content TEXT NOT NULL,
+    contact VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 积分流水表
+CREATE TABLE IF NOT EXISTS point_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    amount INTEGER NOT NULL,
+    description VARCHAR(128),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 视频表
+CREATE TABLE IF NOT EXISTS video (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128) NOT NULL,
+    description VARCHAR(256),
+    song_id INTEGER,
+    video_url VARCHAR(256),
+    thumbnail_url VARCHAR(256),
+    duration INTEGER DEFAULT 0,
+    transcode_status VARCHAR(32) DEFAULT 'pending',
+    transcode_error VARCHAR(512),
+    sort_order INTEGER DEFAULT 0,
+    play_count INTEGER DEFAULT 0,
+    like_count INTEGER DEFAULT 0,
+    favorite_count INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 视频点赞表
+CREATE TABLE IF NOT EXISTS video_like (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    video_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(user_id, video_id)
+);
+
+-- 视频收藏表
+CREATE TABLE IF NOT EXISTS video_favorite (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    video_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(user_id, video_id)
+);
+
+-- 评论表
+CREATE TABLE IF NOT EXISTS comment (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    video_id INTEGER NOT NULL,
+    content TEXT NOT NULL,
+    parent_id INTEGER,
+    status VARCHAR(32) DEFAULT 'approved',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 用户反馈表
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL DEFAULT 'suggestion',
+    content TEXT NOT NULL,
+    contact VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 积分流水表
+CREATE TABLE IF NOT EXISTS point_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    amount INTEGER NOT NULL,
+    description VARCHAR(128),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Banner 表
+CREATE TABLE IF NOT EXISTS banner (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128),
+    image_url VARCHAR(256) NOT NULL,
+    link_url VARCHAR(256),
+    sort_order INTEGER DEFAULT 0,
+    status INTEGER DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 用户反馈表
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL DEFAULT 'suggestion',
+    content TEXT NOT NULL,
+    contact VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 积分流水表
+CREATE TABLE IF NOT EXISTS point_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    amount INTEGER NOT NULL,
+    description VARCHAR(128),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 搜索历史表
+CREATE TABLE IF NOT EXISTS search_history (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    keyword VARCHAR(128) NOT NULL,
+    search_count INTEGER DEFAULT 1,
+    last_search_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 用户反馈表
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL DEFAULT 'suggestion',
+    content TEXT NOT NULL,
+    contact VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 积分流水表
+CREATE TABLE IF NOT EXISTS point_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    amount INTEGER NOT NULL,
+    description VARCHAR(128),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 热门搜索表
+CREATE TABLE IF NOT EXISTS hot_search (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    keyword VARCHAR(128) NOT NULL,
+    search_count INTEGER DEFAULT 0,
+    is_hot INTEGER DEFAULT 0,
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 用户反馈表
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL DEFAULT 'suggestion',
+    content TEXT NOT NULL,
+    contact VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 积分流水表
+CREATE TABLE IF NOT EXISTS point_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    amount INTEGER NOT NULL,
+    description VARCHAR(128),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 管理员表
+CREATE TABLE IF NOT EXISTS admin (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username VARCHAR(64) UNIQUE NOT NULL,
+    password VARCHAR(128) NOT NULL,
+    nickname VARCHAR(64),
+    role VARCHAR(32) DEFAULT 'admin',
+    status INTEGER DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 系统配置表
+CREATE TABLE IF NOT EXISTS system_config (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    config_key VARCHAR(64) UNIQUE NOT NULL,
+    config_value VARCHAR(512),
+    description VARCHAR(256),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 求谱申请表
+CREATE TABLE IF NOT EXISTS song_request (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    song_name VARCHAR(128) NOT NULL,
+    artist VARCHAR(128),
+    category VARCHAR(32),
+    description TEXT,
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    deleted INTEGER DEFAULT 0
+);
+
+-- 用户反馈表
+CREATE TABLE IF NOT EXISTS feedback (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL DEFAULT 'suggestion',
+    content TEXT NOT NULL,
+    contact VARCHAR(128),
+    status VARCHAR(32) DEFAULT 'pending',
+    reply TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 积分流水表
+CREATE TABLE IF NOT EXISTS point_log (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    type VARCHAR(32) NOT NULL,
+    amount INTEGER NOT NULL,
+    description VARCHAR(128),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

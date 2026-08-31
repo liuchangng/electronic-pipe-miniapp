@@ -1,0 +1,74 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+
+spring:
+  application:
+    name: score-miniapp-server
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:score.db
+    username:
+    password:
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+# MyBatis-Flex 配置
+mybatis-flex:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# Sa-Token 配置
+sa-token:
+  token-name: Authorization
+  timeout: 86400
+  active-timeout: -1
+  is-concurrent: true
+  is-share: true
+  token-style: uuid
+  is-log: false
+  # JWT 模式：重启后token仍有效
+  token-session-check-login: false
+  jwt-secret-key: electronic-pipe-miniapp-jwt-secret-2026
+
+# 文件上传配置（视频转码等需要本地路径的场景）
+file:
+  upload:
+    path: ${user.dir}/uploads
+    max-size: 10MB
+
+# x-file-storage 统一文件存储配置
+# 当前使用本地存储，后续切换MinIO/rustfs只需修改default-platform和对应平台配置
+# enable-access: false — 静态文件服务由 FileAccessConfig (WebMvcConfigurer) 处理，更可靠
+dromara:
+  x-file-storage:
+    default-platform: local-plus-1
+    thumbnail-suffix: ".min.jpg"
+    local-plus:
+      - platform: local-plus-1
+        enable-storage: true
+        enable-access: false
+        domain: http://localhost:8080/uploads/
+        base-path: ""
+        path-patterns: /uploads/**
+        storage-path: ${user.dir}/uploads/
+
+# 视频配置
+video:
+  transcode:
+    enabled: true
+    ffmpeg-path: D:\Software\ffmpeg\bin\ffmpeg.exe
+
+# 微信配置（请替换为真实的 AppID 和 AppSecret）
+wx:
+  appid: wxf3fc49ded8668ea3
+  appsecret: 763c3bd4de009a9688b5997697be520c
