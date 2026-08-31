@@ -41,11 +41,8 @@ nul
 .env
 .env.local
 
-# === 数据库 ===
-server/score.db
-
-# === 上传文件 ===
-server/uploads/
-
 # === 大文件 ===
 docs/*.mp4
+
+# === HLS转码产物（可重新生成）===
+server/uploads/hls/

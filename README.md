@@ -48,6 +48,14 @@ npm install
 npm run dev
 ```
 
+### 默认账号
+
+| 系统 | 用户名 | 密码 |
+|------|--------|------|
+| 管理后台 | admin | admin123 |
+
+> 管理后台地址：http://localhost:3001
+
 ### 访问地址
 
 - **前端**: http://localhost:5173
