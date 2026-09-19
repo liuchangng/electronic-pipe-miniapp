@@ -57,6 +57,15 @@ npm run dev
 
 > 管理后台地址：http://localhost:3001
 
+### 微信小程序凭据
+
+微信登录依赖 `wx.appid` 与 `wx.appsecret`，**请勿将真实值硬编码进仓库**。两种本地注入方式（均不会入库）：
+
+- 环境变量：`set WX_APPID=你的AppID` 与 `set WX_APPSECRET=你的AppSecret`（Linux/macOS 用 `export`）
+- 本地文件：在 `server/src/main/resources/application-local.yml` 中填写，该文件已被 `.gitignore` 忽略
+
+未配置时微信登录接口会返回提示，不影响其余功能本地运行。
+
 ### 访问地址
 
 - **前端**: http://localhost:5173

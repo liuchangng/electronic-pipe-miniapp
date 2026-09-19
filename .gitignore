@@ -40,6 +40,8 @@ nul
 # === 环境配置 ===
 .env
 .env.local
+application-local.yml
+*-local.yml
 
 # === 大文件 ===
 docs/*.mp4

@@ -68,7 +68,8 @@ video:
     enabled: true
     ffmpeg-path: D:\Software\ffmpeg\bin\ffmpeg.exe
 
-# 微信配置（请替换为真实的 AppID 和 AppSecret）
+# 微信配置：AppID / AppSecret 请勿硬编码进仓库，请用环境变量注入
+# 本地开发二选一：① 设置环境变量 WX_APPID / WX_APPSECRET；② 在 application-local.yml 中填写（该文件已 gitignore，不会入库）
 wx:
-  appid: wxf3fc49ded8668ea3
-  appsecret: 763c3bd4de009a9688b5997697be520c
+  appid: ${WX_APPID:REPLACE_WITH_YOUR_WX_APPID}
+  appsecret: ${WX_APPSECRET:REPLACE_WITH_YOUR_WX_APPSECRET}
