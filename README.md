@@ -57,14 +57,26 @@ npm run dev
 
 > 管理后台地址：http://localhost:3001
 
-### 微信小程序凭据
+### 本地配置（首次运行必看）
 
-微信登录依赖 `wx.appid` 与 `wx.appsecret`，**请勿将真实值硬编码进仓库**。两种本地注入方式（均不会入库）：
+项目已随仓库提供配置模板 `server/src/main/resources/application-local.yml.example`，**复制后填写你自己的值即可运行**：
 
-- 环境变量：`set WX_APPID=你的AppID` 与 `set WX_APPSECRET=你的AppSecret`（Linux/macOS 用 `export`）
-- 本地文件：在 `server/src/main/resources/application-local.yml` 中填写，该文件已被 `.gitignore` 忽略
+```bash
+cp server/src/main/resources/application-local.yml.example server/src/main/resources/application-local.yml
+```
 
-未配置时微信登录接口会返回提示，不影响其余功能本地运行。
+用文本编辑器打开 `application-local.yml`，至少填写两项（其余保留注释即可）：
+
+| 配置 | 说明 | 获取位置 |
+|------|------|----------|
+| `wx.appid` / `wx.appsecret` | 微信小程序凭据，微信登录依赖它 | 微信公众平台 → 开发管理 → 开发设置 |
+| `video.transcode.ffmpeg-path` | ffmpeg 可执行文件绝对路径（Windows 示例 `D:/Software/ffmpeg/bin/ffmpeg.exe`，Linux/macOS 改为 `/usr/bin/ffmpeg`，或设置环境变量 `FFMPEG_PATH`） | 本机 ffmpeg 安装路径 |
+
+> `application.yml` 中已启用 `spring.profiles.active: local`，`application-local.yml` 会被**自动加载**并覆盖同名配置；该文件已被 `.gitignore` 忽略，不会入库，可放心填真实值。
+
+备选注入方式：直接用环境变量 `set WX_APPID=你的AppID` 与 `set WX_APPSECRET=你的AppSecret`（Linux/macOS 用 `export`）；ffmpeg 路径可用环境变量 `FFMPEG_PATH` 覆盖。
+
+未配置微信凭据时，微信登录接口会返回提示，不影响其余功能本地运行；未配置 ffmpeg 路径时，视频转码功能不可用。
 
 ### 访问地址
 

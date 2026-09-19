@@ -1,0 +1,49 @@
+# ============================================================
+# 本地配置模板（template）—— 不要直接改本文件
+# 用法：复制为 application-local.yml 后填写你自己的值
+#   cp application-local.yml.example application-local.yml
+# （application-local.yml 已被 .gitignore 忽略，不会入库，可放心填真实值）
+# 该文件在 application.yml 中通过 spring.profiles.active: local 自动加载，
+# 其属性会覆盖 application.yml 中的同名配置。
+# ============================================================
+
+# ---------- 微信小程序凭据（必填，否则微信登录不可用） ----------
+# 在微信公众平台「开发管理 → 开发设置」获取；重置密钥后填新值
+wx:
+  appid: 你的微信小程序AppID
+  appsecret: 你的微信小程序AppSecret
+
+# ---------- 视频转码（必填，否则转码功能不可用） ----------
+# ffmpeg 可执行文件绝对路径
+#   Windows 示例：D:/Software/ffmpeg/bin/ffmpeg.exe
+#   Linux/macOS 示例：/usr/bin/ffmpeg
+# 也可不改这里，直接设置环境变量 FFMPEG_PATH
+video:
+  transcode:
+    enabled: true
+    ffmpeg-path: D:/Software/ffmpeg/bin/ffmpeg.exe
+
+# ---------- 以下为可选覆盖项，按需取消注释并修改 ----------
+# server:
+#   port: 8080
+#   address: 0.0.0.0
+#
+# 数据库（默认使用项目根目录 score.db，SQLite 零配置）
+# spring:
+#   datasource:
+#     url: jdbc:sqlite:score.db
+#     username:
+#     password:
+#
+# 上传文件本地存储路径（默认 ${user.dir}/uploads）
+# file:
+#   upload:
+#     path: ${user.dir}/uploads
+#
+# 文件访问域名（本地默认即可，部署时改为你的公网域名）
+# dromara:
+#   x-file-storage:
+#     local-plus:
+#       - platform: local-plus-1
+#         domain: http://localhost:8080/uploads/
+#         storage-path: ${user.dir}/uploads/
