@@ -8,9 +8,7 @@ setlocal
 chcp 65001 >nul 2>&1
 cd /d "%~dp0"
 
-rem ---------- Environment ----------
-set "JAVA_HOME=D:\Software\Java\jdk-26.0.2.1"
-set "PATH=D:\Software\maven-3.8.3\bin;%JAVA_HOME%\bin;%PATH%"
+rem ---------- Environment: requires JAVA_HOME and Maven on system PATH (configure in your dev environment) ----------
 
 set SERVER_PORT=8080
 set ADMIN_PORT=3001
