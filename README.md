@@ -20,8 +20,8 @@
 
 ### 环境要求
 
-- **JDK 26**: `D:\Software\Java\jdk-26.0.2.1`
-- **Maven 3.8.3**: `D:\Software\maven-3.8.3`
+- **JDK 26+**：建议使用 JDK 26 或更高版本，安装路径按本机实际位置配置
+- **Maven 3.8.3+**：构建后端依赖，安装路径按本机实际位置配置
 - **Node.js 18+**: 用于前端开发
 
 ### 一键启动
@@ -33,8 +33,9 @@ start.bat
 # 或手动启动
 # 后端
 cd server
-set JAVA_HOME=D:\Software\Java\jdk-26.0.2.1
-set PATH=D:\Software\maven-3.8.3\bin;%JAVA_HOME%\\bin;%PATH%
+:: 请将下面两行的路径替换为你本机的 JDK 与 Maven 安装路径
+set JAVA_HOME=<你的JDK路径，如 D:\Software\Java\jdk-26.0.2.1>
+set PATH=<你的Maven\bin路径>;%JAVA_HOME%\bin;%PATH%
 mvn spring-boot:run
 
 # 前端
